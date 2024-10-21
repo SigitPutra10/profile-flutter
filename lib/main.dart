@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'Page2.dart';
 
-void main() => runApp(const MaterialApp(
-  debugShowCheckedModeBanner: false,
-  home: home(),
-));
+class Home extends StatelessWidget {
+  final String name;
+  final String role;
+  final String description;
+  final String school;
 
-class home extends StatelessWidget {
-  const home({ super.key});
+  const Home({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.description,
+    required this.school,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -19,12 +25,10 @@ class home extends StatelessWidget {
           image: DecorationImage(
             image: AssetImage("images/Sigit.png"),
             fit: BoxFit.cover,
-          )
+          ),
         ),
-
-
         child: Stack(
-          alignment: Alignment.center ,
+          alignment: Alignment.center,
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
@@ -32,42 +36,55 @@ class home extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               alignment: Alignment.center,
               child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0),),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
                 color: const Color.fromRGBO(252, 219, 138, 1),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      
                       const CircleAvatar(
                         radius: 90.0,
-                        backgroundImage:
-                        AssetImage('images/Sigit.png'),
+                        backgroundImage: AssetImage('images/Sigit.png'),
                       ),
-                      const Text("Sigit Putra Pratama",
+                      Text(
+                        name,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 18, color: Colors.black)
-                        ),
-
-                        const Text("Vocational High School Student at SMK Wikrama Bogor",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16, color: Color(0xF9916B0D))
-                          ),
-
-                        TextButton(onPressed: (){
+                        style: const TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                      Text(
+                        role,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16, color: Color(0xF9916B0D)),
+                      ),
+                      Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16, color: Color(0xF9916B0D)),
+                      ),
+                      Text(
+                        school,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16, color: Color(0xF9916B0D)),
+                      ),
+                      TextButton(
+                        onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Page2()),
+                            MaterialPageRoute(
+                                builder: (context) => const Page2()),
                           );
-                        }, child:const Text('See More')
-                        )
+                        },
+                        child: const Text('See More'),
+                      ),
                     ],
                   ),
-                )
-              )
-            )
-          ]
-        )
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
